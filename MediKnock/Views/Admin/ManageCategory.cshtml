@@ -1,0 +1,92 @@
+﻿@model MediKnock.Models.Admin.AdmincategoryModel
+
+@{
+    ViewBag.Title = "ManageCategory";
+    Layout = "~/Views/Shared/_AdminMaster.cshtml";
+}
+
+
+<div class="col-xs-9">
+    <h2>List<strong> Category</strong></h2>
+</div>
+
+<div class="col-xs-3">
+    <input type="button" value="Add Category" style="float:right;" class="btn btn-dark" data-toggle="modal" data-target="#modal-select" onclick="location.href = '/Admin/AddCategory'">
+</div>
+@*<input type="text" value="@TransectionID" id="hdnTransectionID" style="display:none" />*@
+@{
+    if (Model.lstCategory != null && Model.lstCategory.Count > 0)
+    {
+        <body>
+            <div class="row">
+
+                @*<a onclick="ShowAllProducts()" id="ShowAllProductsID" style="cursor:pointer;" class="btn btn-dark">Clik Here to Display All Products</a>*@
+
+
+                <div class="col-lg-12 portlets">
+                    <div class="panel">
+                        <div class="panel-content pagination2 table-responsive">
+                            <table class="table table-hover table-dynamic">
+                                <thead>
+                                    <tr>
+                                        <th>Category Name</th>
+                                        @*<th>Heading</th>
+                                        <th>Short Description</th>
+                                        <th>Long Description</th>
+                                        <th>Price</th>
+                                        <th>Quantity</th>
+                                        <th>Actions</th>*@
+
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @{
+        if (Model.lstCategory != null)
+        {
+            foreach (var item in Model.lstCategory)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    @*<td>
+                        @Html.DisplayFor(modelItem => item.Heading)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ShortDescription)
+
+
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.LongDescription)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Price)
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Quantity)
+                    </td>*@
+                    <td>
+                        <a href='~/Admin/AddCategory?ID=@item.ID'>Edit</a>-
+                        <a href='~/Admin/DeleteCategory?ID=@item.ID' onclick="return confirm('Are you sure ?');">Delete</a>
+                    </td>
+                </tr>
+            }
+        }
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </body>
+    }
+    else
+    {
+        <h2 style="color:green;float:left; margin:15px;">No Stock Available </h2>
+    }
+}

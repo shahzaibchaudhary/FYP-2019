@@ -1,0 +1,287 @@
+﻿@model MediKnock.Models.Admin.ProductModel
+
+
+
+@{
+    ViewBag.Title = "AddComany";
+    Layout = "~/Views/Shared/_AdminMaster.cshtml";
+}
+
+
+@section ImageCroping{
+
+    <script type="text/javascript">
+        function GetImageNameInHiddenBox() {
+            debugger;
+            var UploadedImage = $("#ImgUpload").children("img").attr('src');
+            if (UploadedImage === undefined) {
+                var Img = $("#AdminImage").attr('src');
+                $("#hdn_Img").val(Img);
+            }
+            else {
+                $("#hdn_Img").val(UploadedImage);
+            }
+
+            Validate();
+
+        }
+
+        function Validate() {
+
+            var SelectedText = $("#DpCategory option:selected").text();
+
+            if (SelectedText == "Please select Category") {
+                $("#SpandpCategory").show();
+                return false;
+            } else {
+                $("#SpandpCategory").hide();
+            }
+
+            var DpMarketText = $("#DpSubCategory option:selected").text();
+
+            if (DpMarketText == "Please select Sub Category") {
+                $("#SpandpSubCategory").show();
+                return false;
+            } else {
+                $("#SpandpSubCategory").hide();
+            }
+
+            $('#FormUser').submit();
+
+        }
+
+
+
+    </script>
+
+
+<script type="text/javascript">
+
+    $('#DpCategory').change(function () {
+
+        debugger;
+
+
+        var SelectedText = $("#DpCategory option:selected").text();
+
+            if (SelectedText == "Please select category") {
+            } else {
+                $("#SpandpCategory").hide();
+            }
+
+            var SelectedText = $("#DpSubCategory option:selected").text();
+
+            if (SelectedText == "Please select sub category") {
+            } else {
+                $("#SpandpSubCategory").hide();
+            }
+
+            var CategoryID = $("#DpCategory").val();
+            var regionsSelect = $('#DpSubCategory');
+                regionsSelect.empty();
+
+                if (CategoryID != null) {
+
+
+                    $.getJSON('@Url.Action("GetSubCategory")', { CategoryID: CategoryID }, function (SubCategories) {
+
+                        if (!jQuery.isEmptyObject(SubCategories)) {
+
+                        regionsSelect.append($('<option/>', {
+                            value: "",
+                            text: "Please select Sub Category"
+                        }));
+                        $.each(SubCategories, function (index, value) {
+                            regionsSelect.append($('<option/>', {
+                                value: value.ID,
+                                text: value.Name
+                            }));
+                        });
+
+                    } else {
+
+                        regionsSelect.append($('<option/>', {
+                            value: "",
+                            text: "Please select Sub Category"
+                        }));
+                    }
+
+                });
+
+
+            }
+        });
+
+
+        $('#DpMarket').change(function () {
+
+
+            var SelectedText = $("#DpMarket option:selected").text();
+
+            if (SelectedText == "Please select Market") {
+            } else {
+                $("#SpandpMarket").hide();
+            }
+        });
+
+</script>
+
+
+}
+
+
+
+
+<div class="col-xs-9">
+    <h2>Add<strong> Product</strong></h2>
+</div>
+<div class="col-xs-3">
+    <input type="button" value="Manage Products" style="float:right;" class="btn btn-dark" data-toggle="modal" data-target="#modal-select" onclick="location.href = '/Admin/ManageProduct'">
+</div>
+<form method="post" enctype="multipart/form-data" id="FormUser">
+
+    <div class="row">
+        <div class="col-lg-12 portlets">
+            <div class="panel">
+                <div class="panel-content">
+                    <h2> ADD/UPDATE Product</h2>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="form-label">ProductName </label>
+                                @Html.TextBoxFor(x => x.ProductDetail.ID, new { @Style = "display: none;" })
+                                @Html.TextBoxFor(x => x.ProductDetail.Name, new { @placeholder = "Product Name", @class = "form-control", @required = "required" })
+
+                                @if (Model.IsNameAlreadyExist == "yes")
+                                {
+                                    <span style="color:red">This Name is already added.</span>
+                                }
+                                        
+                                
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="form-label">Heading</label>
+                                @Html.TextBoxFor(x => x.ProductDetail.Heading, new { @placeholder = "Heading", @class = "form-control" })
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="form-label">ShortDescription</label>
+                                @Html.TextBoxFor(x => x.ProductDetail.ShortDescription, new { @placeholder = "Short Description", @class = "form-control" })
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="form-label">Long Description</label>
+                                @Html.TextBoxFor(x => x.ProductDetail.LongDescription, new { @placeholder = "Long Description", @class = "form-control" })
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="form-label">Price</label>
+                                @Html.TextBoxFor(x => x.ProductDetail.Price, new { @class = "form-control", @placeholder = "Price" })
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="form-label">Quantity</label>
+                                @Html.TextBoxFor(x => x.ProductDetail.Quantity, new { @placeholder = "Quantity", @class = "form-control" })
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="form-label">Select Category</label>
+                                @Html.DropDownListFor(x => x.ProductDetail.CategoryID, new SelectList(Model.lstCategory, "ID", "Name"), "Please select Category", new { @id = "DpCategory", @class = "form-control form-group" })
+                                
+                                <span id="SpandpCategory" style="color:red" hidden> Please Choose Category </span>
+
+
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="form-label">Select Category</label>
+                                @Html.DropDownListFor(x => x.ProductDetail.Sub_CategoryID, new SelectList(Model.lstSub_Category, "ID", "Name"), "Please select Sub-Category", new { @id = "DpSubCategory", @class = "form-control form-group" })
+                                <span id="SpandpSubCategory" style="color:red" hidden> Please Choose Sub-Category </span>
+                            </div>
+                        </div>
+
+
+                       
+
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="form-label">Poteny</label>
+                                @Html.TextBoxFor(x => x.ProductDetail.Potency, new { @placeholder = "Potency", @class = "form-control" })
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="form-label">Salt</label>
+                                @Html.TextBoxFor(x => x.ProductDetail.ProductSalt, new { @placeholder = "ProductSalt", @class = "form-control" })
+                            </div>
+                        </div>
+
+                      
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <div data-provides="fileinput" class="fileinput fileinput-new">
+                                    <div >
+                                        @Html.HiddenFor(x => x.ProductDetail.Image, new { @id = "hdn_Img" })
+                                    </div>
+
+                                    <p><strong>image uploader</strong></p>
+                                    <div class="fileinput-new thumbnail">
+                                        @{
+                                            if (Model.ProductDetail.Image != null)
+                                            {
+                                                <img id="AdminImage" alt="gallery 3" class="img-responsive" src="~/Images/ProductImages/@Model.ProductDetail.Image" data-src="">
+                                            }
+                                            else
+                                            {
+                                                <img id="AdminImage" alt="gallery 3" class="img-responsive" src="~/Images/NoImage.jpg" data-src="">
+                                            }
+                                        }
+
+                                    </div>
+                                    <div id="ImgUpload" class="fileinput-preview fileinput-exists thumbnail"></div>
+                                    <div>
+                                        <span class="btn btn-default btn-file">
+                                            <span class="fileinput-new">select image...</span><span class="fileinput-exists">change</span>
+                                            <input type="file" name="...">
+                                        </span>
+                                        <a data-dismiss="fileinput" class="btn btn-default fileinput-exists" href="#">remove</a>
+                                    </div>
+                                </div>
+
+
+                            </div>
+                        </div>
+                    
+                    </div>
+                            <div>
+                                @{
+                                string Text = "Save";
+                                if (Model.add == "update")
+                                {
+                                    Text = "Update";
+                                }
+                                    }
+
+                                <input type="submit" id="btnSave" onclick="GetImageNameInHiddenBox();" class=" btn btn-dark" value="@Text" name="Save" />
+ 
+                            </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

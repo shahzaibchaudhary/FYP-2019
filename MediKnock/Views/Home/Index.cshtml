@@ -1,0 +1,121 @@
+﻿@model MediKnock.Models.Client.HomeBE
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_MainMaster.cshtml";
+}
+
+@using MediKnock.CommonClasses
+
+  <!-- Home content -->
+
+<section class="home">
+
+
+    <!-- Slider -->
+
+    @if (Model != null && Model.lstHomeSlider != null && Model.lstHomeSlider.Count > 0)
+    {
+        
+    
+    <section class="flexslider">
+        <ul class="slides">
+
+            @foreach (var item in Model.lstHomeSlider)
+            {
+                <li>
+                    <img src="~/Resources/Frontend/img/HomeSlider/5.jpg" width="100" height="200" />
+
+                </li>
+            }
+
+
+
+
+
+        </ul>
+        @*<img src="~/Resources/Frontend/img/HomeSlider/5.jpg" width="400" height="250" />*@
+    </section>
+
+
+    }
+
+    <!-- End class="flexslider" -->
+
+  
+
+    <section class="featured">
+        <div class="container">
+
+            <div class="row">
+
+                <div class="span3">
+                    <!-- Categories widget -->
+                    <div class="widget Categories">
+                        <h3 class="widget-title widget-title ">PHARMACY</h3>
+                        <ul>
+                           @if(Model.lstSub_Category!=null && Model.lstSub_Category.Count>0)
+                           {
+                               foreach (var sub_cate_item in Model.lstSub_Category)
+                               {
+                                    <li class="megamenu-heading">
+                                        <a href="/Category-SubCategory-@sub_cate_item.ID" style="cursor:pointer">@sub_cate_item.Name</a>
+                                    </li>
+                               }
+                           }
+
+                        </ul>
+                    </div>
+                    <!-- End class="widget Categories" -->
+                 
+
+                </div>
+                <div class="span9">
+                    <!-- Products list -->
+
+                    <ul class="product-list isotope">
+
+                        @if (Model.lstProduct != null && Model.lstProduct.Count > 0)
+                        {
+                            foreach (var item in Model.lstProduct)
+                            {
+                                <li class="standard" data-price="50">
+                                    <a href="/Cat-SubCat-Product-@item.ID" title="Nep Pocket Tee">
+
+                                        <div class="image">
+                                          
+                                            <img src="~/Images/ProductImages/@item.Image" alt="@item.Image" class="img-responsive" />
+
+                                        </div>
+
+                                        <div class="title">
+                                            <div class="prices">
+                                                <span class="price">RS:@item.Price</span>
+                                            </div>
+                                            <h3>@item.Name</h3>
+
+                                           
+                                        </div>
+
+                                    </a>
+                            </li>
+                            }
+
+                        }
+
+
+                    </ul>
+
+                    <!-- End class="product-list " -->
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+
+
+</section>
+
+<!-- End class="home" -->

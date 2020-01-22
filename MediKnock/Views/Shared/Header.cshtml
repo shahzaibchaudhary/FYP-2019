@@ -1,0 +1,97 @@
+﻿@model MediKnock.Models.Client.HeaderBE
+
+@using System;
+@using MediKnock.Models
+<!-- Navigation -->
+<nav class="navigation">
+    <div class="container">
+
+        <div class="row">
+            <div class="span9">
+
+                <a href="#" class="main-menu-button">Navigation</a>
+                <!-- Begin Menu Container -->
+                <div class="megamenu_container">
+                    <div class="menu-main-navigation-container">
+                        <ul id="menu-main-navigation" class="main-menu">
+                        
+
+
+                            @if (Model != null && Model.lstCategory != null && Model.lstCategory.Count > 0)
+                            {
+                                foreach (var Cate_item in Model.lstCategory)
+                                {
+                                    <li class="menu-item-has-children megamenu-parent" data-width="550">
+                                        <a href="/Category-@Cate_item.ID">@Cate_item.Name</a>
+                                        <ul class="sub-menu">
+                                            @{
+                                                
+                                    List<Sub_Category> LocallstSub_Category = new List<Sub_Category>();
+
+                                    LocallstSub_Category = Model.lstSub_Category.Where(x => x.CategoryID == Cate_item.ID).ToList();
+                                            }
+
+                                            @if (LocallstSub_Category != null && LocallstSub_Category.Count > 0)
+                                            {
+                                                foreach (var Sub_Cate_item in LocallstSub_Category)
+                                                {
+                                                    <li class="menu-item-has-children megamenu-column">
+                                                        <a href="#MegaMenuColumn">Mega Menu Column</a>
+                                                        <ul class="sub-menu">
+
+                                                            <li class="megamenu-heading"><a href="/Category-SubCategory-@Sub_Cate_item.ID" style="cursor:pointer">@Sub_Cate_item.Name</a></li>
+
+                                                            @{
+                                                    List<Product> LocallstProduct = new List<Product>();
+
+                                                    LocallstProduct = Model.lstProduct.Where(x => x.Sub_CategoryID == Sub_Cate_item.ID).ToList();
+                                                            }
+
+                                                            @if (LocallstProduct != null && LocallstProduct.Count > 0)
+                                                            {
+                                                                foreach (var Product_item in LocallstProduct)
+                                                                {
+                                                                    <li>
+                                                                        <a href="/Cat-SubCat-Product-@Product_item.ID" class="title">@Product_item.Name</a>
+                                                                    </li>
+                                                                  
+                                                                }
+                                                            }
+                                                        </ul>
+                                                    </li>
+                                                }
+                                            }
+                                            
+                                        </ul>
+                                    </li>
+
+                                }
+                                
+                                
+                                <li class="menu-item-has-children megamenu-parent" data-width="550">
+                                        <a href="/DoctorInfo/index">Doctor info</a>
+                                        
+                                    </li>
+                                
+                                
+                            }
+
+                        
+
+
+
+
+                            </ul>
+                        </div>
+                    </div>
+
+
+                </div>
+
+                <div class="span3 visible-desktop">
+                </div>
+            </div>
+
+        </div>
+    </nav>
+    <!-- End class="navigation" -->

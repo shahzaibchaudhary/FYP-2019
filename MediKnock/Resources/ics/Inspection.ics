@@ -1,0 +1,10 @@
+BEGIN:VCALENDAR
+PRODID:-//Flo Inc.//FloSoft//EN
+BEGIN:VEVENT
+DTSTART:20170114T040000Z
+DTEND:20170114T050000Z
+DESCRIPTION;ENCODING=ESCAPED-CHAR:Discription: Test project for sandbox testing and IOS.., \n Adresse: Test project sandbox, \n Kommentar: coommeent
+SUMMARY:1934 - Test project sandbox - 123/123, Discription: Test project for sandbox testing and IOS..
+PRIORITY:3
+END:VEVENT
+END:VCALENDAR

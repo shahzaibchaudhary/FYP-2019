@@ -1,0 +1,167 @@
+﻿@model MediKnock.Models.Client.UserProfileBE
+
+@{
+    ViewBag.Title = "Profile";
+    Layout = "~/Views/Shared/_MainMaster.cshtml";
+}
+
+<!-- Content section -->
+<section class="main">
+
+    <!-- Cart container -->
+    <section class="cart">
+
+
+
+        <div class="container">
+            <div class="row">
+
+                <div class="span9">
+
+                    <!-- Cart -->
+                    <div class="box">
+                        @*<form enctype="multipart/form-data" action="checkout-start.html" method="post">*@
+
+                        @using (@Html.BeginForm("Profile", "UserProfile"))
+                        {
+
+                            @Html.HiddenFor(x => x.CartId)
+
+                            if (Model.lstCartItem != null && Model.lstCartItem.Count > 0)
+                            {
+                                <div class="box-header">
+                                    <h3>Shopping cart</h3>
+                                    <h5>You currently have <strong>@Model.lstCartItem.Count</strong> item(s) in your cart</h5>
+                                </div>
+                            }
+                            else
+                            {
+                                <div class="box-header">
+                                    <h3>Shopping cart</h3>
+                                    <h5>You currently have <strong>0</strong> item(s) in your cart</h5>
+                                </div>
+                            }
+
+                            if (Model.lstCartItem != null && Model.lstCartItem.Count > 0)
+                            {
+                                <div class="box-content">
+                                    <div class="cart-items">
+                                        <table class="styled-table">
+                                            <thead>
+                                                <tr>
+                                                    <th class="col_product text-left">Product</th>
+
+                                                    <th class="col_qty text-right">Qty</th>
+                                                    <th class="col_single text-right">Single</th>
+                                                    <th class="col_total text-right">Total</th>
+
+                                                    @*<th class="col_remove text-right">&nbsp;</th>*@
+                                                </tr>
+                                            </thead>
+
+                                            <tbody>
+                                                @foreach (var item in Model.lstCartItem)
+                                                {
+
+                                                    decimal? TotalPrice = Convert.ToDecimal(item.Quantity) * item.Price;
+
+                                                    <tr>
+                                                        <td data-title="Product" class="col_product text-left">
+                                                            <h5>
+                                                                <a href="#">@item.ProductName</a>
+                                                            </h5>
+                                                        </td>
+
+                                                        @*<td data-title="Qty" class="col_qty text-right">
+                                                                <input type="text" name="item_quantity[]" value="1" />
+                                                            </td>*@
+                                                        <td data-title="Single" class="col_single text-right">
+                                                            <span class="single-price">@item.Quantity</span>
+                                                        </td>
+
+                                                        <td data-title="Single" class="col_single text-right">
+                                                            <span class="single-price">@item.Price</span>
+                                                        </td>
+
+                                                        <td data-title="Total" class="col_total text-right">
+                                                            <span class="total-price">@TotalPrice</span>
+                                                        </td>
+
+                                                        @*<td data-title="Remove" class="col_remove text-right">
+                                                                <a href="#">
+                                                                    <i class="icon-trash icon-large"></i>
+                                                                </a>
+                                                            </td>*@
+                                                    </tr>
+
+                                                }
+
+
+                                                @if (Model.lstCartItem != null && Model.lstCartItem.Count > 0)
+                                                {
+                                                    <tr>
+                                                        <td data-title="Total" class="col_product text-left" colspan="5">
+                                                            <span class="total-price" style="float:right;">
+                                                                &nbsp;Total &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;= &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; @Model.lstCartItem.Sum(x => x.TotalPrice)
+                                                            </span>
+                                                        </td>
+                                                    </tr>
+                                                }
+                                                else
+                                                {
+                                                    <tr>
+                                                        <td data-title="Total" class="col_product text-left" colspan="5">
+                                                            <span class="total-price" style="float:right;">
+                                                                &nbsp;Total &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;= &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0
+                                                            </span>
+                                                        </td>
+                                                    </tr>
+                                                }
+
+
+
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            }
+
+
+
+
+                            <div class="box-footer">
+                                <div class="pull-left">
+                                    <a href="/Home/Index" class="btn btn-small">
+                                        <i class="icon-chevron-left"></i> &nbsp; Continue shopping
+                                    </a>
+                                </div>
+
+                                <div class="pull-right">
+                                    @*<button type="submit" class="btn btn-small mm20">
+                                            <i class="icon-undo"></i> &nbsp; Update cart
+                                        </button>*@
+
+                                    <button type="submit" name="checkout" value="1" class="btn btn-primary btn-small mm20">
+                                        Proceed to checkout &nbsp; <i class="icon-chevron-right"></i>
+                                    </button>
+                                </div>
+                            </div>
+
+
+                            @*</form>*@
+                        }
+                    </div>
+                    <!-- End Cart -->
+
+
+                </div>
+
+
+
+            </div>
+        </div>
+    </section>
+    <!-- End Cart container -->
+
+</section>
+<!-- End class="main" -->

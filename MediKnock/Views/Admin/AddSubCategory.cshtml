@@ -1,0 +1,112 @@
+﻿@model MediKnock.Models.Admin.AdminSubCategoryModel 
+
+@{
+    ViewBag.Title = "AddCategory";
+    Layout = "~/Views/Shared/_AdminMaster.cshtml";
+}
+
+
+@section ImageCroping{
+
+
+
+    <script type="text/javascript">
+
+        function Validate() {
+
+            debugger;
+
+            var SelectedText = $("#DpCategory option:selected").text();
+
+            if (SelectedText == "Please select Category") {
+                $("#SpandpCategory").show();
+                return false;
+            } else {
+                $("#SpandpCategory").hide();
+            }
+
+            if ($("#SubCategoryNameID").val()== "") {
+                $("#SpanCategoryName").show();
+                return false;
+            } else {
+                $("#SpanCategoryName").hide();
+            }
+                    
+
+
+            $('#FormUser').submit();
+
+        }
+    </script>
+
+
+}
+
+<div class="col-xs-9">
+    <h2>Add<strong> Sub Category</strong></h2>
+</div>
+<div class="col-xs-3">
+    <input type="button" value="Manage Products" style="float:right;" class="btn btn-dark" data-toggle="modal" data-target="#modal-select" onclick="location.href = '/Admin/ManageProduct'">
+</div>
+<form method="post" enctype="multipart/form-data" id="FormUser">
+
+    <div class="row">
+        <div class="col-lg-12 portlets">
+            <div class="panel">
+                <div class="panel-content">
+                    <h2> ADD/UPDATE Sub Category</h2>
+                    <div class="row">
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="form-label">Select Category</label>
+                                @Html.DropDownListFor(x => x.Sub_CategoryDetail.CategoryID, new SelectList(Model.lstCategory, "ID", "Name"), "Please select Category", new { @id = "DpCategory", @class = "form-control form-group" })
+
+                                <span id="SpandpCategory" style="color:red" hidden> Please Choose Category </span>
+
+
+                            </div>
+                        </div>
+
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="form-label">Sub Category Name </label>
+                                @Html.TextBoxFor(x => x.Sub_CategoryDetail.ID, new { @Style = "display: none;" })
+                                @Html.TextBoxFor(x => x.Sub_CategoryDetail.Name, new { @id = "SubCategoryNameID", @placeholder = "Sub Category Name", @class = "form-control", @required = "required" })
+                                <span id="SpanCategoryName" style="color:red" hidden> Sub Category is required</span>
+                            </div>
+                        </div>
+                       
+                        @*<div class="col-md-6">
+                            <div class="form-group">
+                                <label class="form-label">Short Description</label>
+                                @Html.TextBoxFor(x => x.CategoryDetail.ShortDescription, new { @placeholder = "Short Description", @class = "form-control" })
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="form-label">Long Description</label>
+                                @Html.TextBoxFor(x => x.CategoryDetail.LongDescription, new { @placeholder = "Long Description", @class = "form-control" })
+                            </div>
+                        </div>*@
+
+                    </div>
+                    <div>
+                        @{
+                            string Text = "Save";
+                            if (Model.add == "update")
+                            {
+                                Text = "Update";
+                            }
+                        }
+
+                        <input type="submit" id="btnSave" onclick="return Validate();" class=" btn btn-dark" value="@Text" name="Save" />
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

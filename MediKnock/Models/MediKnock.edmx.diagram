@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="93c7b952ddec4c95b3a646a51b85b6cb" Name="Diagram1">
+        <EntityTypeShape EntityType="MediKnock_DBModel.AdminUser" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MediKnock_DBModel.Category" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MediKnock_DBModel.Company" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MediKnock_DBModel.HomeSlider" Width="1.5" PointX="0.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MediKnock_DBModel.Sub_Category" Width="1.5" PointX="4.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MediKnock_DBModel.UserProfile" Width="1.5" PointX="6.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MediKnock_DBModel.Product" Width="1.5" PointX="7.375" PointY="4.75" />
+        <EntityTypeShape EntityType="MediKnock_DBModel.CartItem" Width="1.5" PointX="3.375" PointY="9.75" />
+        <EntityTypeShape EntityType="MediKnock_DBModel.ShopingCart" Width="1.5" PointX="9.375" PointY="5.75" />
+        <EntityTypeShape EntityType="MediKnock_DBModel.ShippingDetail" Width="1.5" PointX="9.375" PointY="0.75" />
+        <EntityTypeShape EntityType="MediKnock_DBModel.DoctorInfo" Width="1.5" PointX="0.75" PointY="9.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

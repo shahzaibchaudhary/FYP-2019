@@ -1,0 +1,208 @@
+﻿@model MediKnock.Models.Client.CategoryBE
+
+@{
+    ViewBag.Title = "Product_Detail";
+    Layout = "~/Views/Shared/_MainMaster.cshtml";
+}
+
+<!-- Content section -->
+<section class="main">
+
+    <!-- Product content -->
+    <section class="product">
+
+
+        <!-- Product info -->
+        <section class="product-info">
+            <div class="container">
+                <div class="row">
+
+                    <div class="span4">
+                        <div class="product-images">
+                            <div class="box">
+                                <div class="primary">
+                                    <img src="~/Images/ProductImages/@Model.ProductDetail.Image" alt="@Model.ProductDetail.Image" />
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="span8">
+
+                        <!-- Product content -->
+                        <div class="product-content">
+                            <div class="box">
+
+                                <!-- Tab panels' navigation -->
+                                <ul class="nav nav-tabs">
+                                    <li class="active">
+                                        <a href="#product" data-toggle="tab">
+                                            <i class="icon-reorder icon-large"></i>
+                                            <span class="hidden-phone">Product</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#description" data-toggle="tab">
+                                            <i class="icon-info-sign icon-large"></i>
+                                            <span class="hidden-phone">Info</span>
+                                        </a>
+                                    </li>
+
+                                    <li>
+                                        <a href="#shipping" data-toggle="tab">
+                                            <i class="icon-truck icon-large"></i>
+                                            <span class="hidden-phone">Shipping</span>
+                                        </a>
+                                    </li>
+
+                                </ul>
+                                <!-- End Tab panels' navigation -->
+                                <!-- Tab panels container -->
+
+                                <div class="tab-content">
+
+                                    <!-- Product tab -->
+                                    <div class="tab-pane active" id="product">
+                                        @using (@Html.BeginForm("AddCart", "Category"))
+                                        {
+                                            @Html.HiddenFor(x=>x.ProductDetail.CategoryID)
+                                            @Html.HiddenFor(x=>x.ProductDetail.Sub_CategoryID)
+                                            @Html.HiddenFor(x=>x.ProductDetail.ID)
+                                            
+                                            
+                                            @Html.HiddenFor(x=>x.ProductDetail.Name)
+                                            @Html.HiddenFor(x=>x.ProductDetail.Price)
+                                            
+                                            @Html.HiddenFor(x=>x.ProductDetail.ShortDescription)
+
+                                                                                        
+                                            @*<form enctype="multipart/form-data" action="#" onsubmit="return false;" method="post">*@
+
+                                            <div class="details">
+                                                <h1>@Model.ProductDetail.Name</h1>
+                                                <div class="prices"><span class="price">Rs.@Model.ProductDetail.Price</span></div>
+                                            </div>
+
+                                            <div class="short-description">                                                
+                                                <p>@Model.ProductDetail.ShortDescription</p>
+                                            </div>
+                                            
+                                            <div class="">
+                                                <h6>Quantity</h6>
+                                                @*@Html.TextBoxFor(x => x.ProductDetail.Quantity)*@  
+                                                @Html.TextBoxFor(x => x.QuantitytoPurchase)
+
+
+                                                                                              
+                                            </div>
+
+                                            <div class="add-to-cart">
+                                                <button class="btn btn-primary btn-large">
+                                                    <i class="icon-plus"></i> &nbsp; Add to cart
+                                                </button>
+                                            </div>
+                                            @*</form>*@
+                                        }
+
+                                    </div>
+                                    <!-- End id="product" -->
+                                    <!-- Description tab -->
+                                    <div class="tab-pane" id="description">
+                                        <p>
+                                            @Model.ProductDetail.LongDescription
+                                        </p>
+                                    </div>
+                                    <!-- End id="description" -->
+                                    <!-- Shipping tab -->
+                                    <div class="tab-pane" id="shipping">
+                                        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.</p>
+                                        <p><img class="img-polaroid" src="http://www.tfingi.com/repo/royal-mail.png" alt="" /><img class="img-polaroid" src="http://www.tfingi.com/repo/ups-logo.png" alt="" /></p>
+                                        <p>Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
+                                        <h6><em class="icon-gift"></em> Giftwrap?</h6>
+                                        <p>Let us take care of giftwrapping your presents by selecting <strong>Giftwrap</strong> in the order process. Eligible items can be giftwrapped for as little as &pound;0.99, and larger items may be presented in gift bags.</p>
+                                    </div>
+                                    <!-- End id="shipping" -->
+
+
+                                </div>
+                                <!-- End tab panels container -->
+
+                            </div>
+
+                        </div>
+                        <!-- End class="product-content" -->
+
+                    </div>
+
+
+                </div>
+            </div>
+        </section>
+        <!-- End class="product-info" -->
+
+
+
+        <section class="featured">
+            <div class="container">
+                <h2>
+
+                    Related Products with same salt.
+                    
+                </h2>
+
+                <div class="row">
+                    <div class="span9">
+                        <!-- Products list -->
+
+                        <ul class="product-list isotope">
+
+                            @if (Model.lstProduct != null && Model.lstProduct.Count > 0)
+                            {
+                                foreach (var item in Model.lstProduct)
+                                {
+                                    <li class="standard" data-price="50">
+                                        <a href="/Cat-SubCat-Product-@item.ID" title="Nep Pocket Tee">
+
+                                            <div class="image">
+                                                @*<img class="primary" src="~/Resources/Frontend/img/thumbnails/db_file_img_48_640xauto.jpg" alt="Lisette Dress" />
+                                                <img class="secondary" src="~/Resources/Frontend/img/thumbnails/db_file_img_49_640xauto.jpg" alt="Lisette Dress" />*@
+
+                                                <img src="~/Images/ProductImages/@item.Image" alt="@item.Image" class="img-responsive" />
+
+                                            </div>
+
+                                            <div class="title">
+                                                <div class="prices">
+                                                    <span class="price">@item.Price</span>
+                                                </div>
+                                                <h3>@item.Name</h3>
+
+                                                <div class="rating rating-3">
+                                                    <i class="icon-heart"></i>
+                                                    <i class="icon-heart"></i>
+                                                    <i class="icon-heart"></i>
+                                                </div>
+                                            </div>
+
+                                        </a>
+                                    </li>
+                                }
+                            }
+                            
+                        </ul>
+
+                        <!-- End class="product-list isotope" -->
+
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+
+    </section>
+    <!-- End class="product-info" -->
+
+</section>
+<!-- End class="main" -->

@@ -1,0 +1,335 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <meta name="description" content="admin-themes-lab">
+    <meta name="author" content="themes-lab">
+    <link rel="shortcut icon" href="~/Resources/global/images/favicon.png" type="image/png">
+    <title>MediKnock</title>
+    <link href="~/Resources/global/css/style.css" rel="stylesheet">
+    <link href="~/Resources/global/css/theme.css" rel="stylesheet">
+    <link href="~/Resources/global/css/ui.css" rel="stylesheet">
+    <link href="~/Resources/admin/layout1/css/layout.css" rel="stylesheet" />
+    <link href="~/Resources/global/plugins/summernote/summernote.min.css" rel="stylesheet">
+
+    
+    <link href="../Resources/admin/layout1/css/layout.css" rel="stylesheet" />
+    <!-- BEGIN PAGE STYLE -->
+ 
+    <link href="../Resources/global/plugins/datatables/dataTables.min.css" rel="stylesheet" />
+    <!-- END PAGE STYLE -->
+  
+    <script src="../Resources/global/plugins/modernizr/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+    <link href="~/Resources/global/css/jquery.datetimepicker.css" rel="stylesheet" />
+    <link href="~/Resources/global/plugins/dropzone/dropzone.min.css" rel="stylesheet" />
+    <link href="~/Resources/global/plugins/input-text/style.min.css" rel="stylesheet" />
+</head>
+
+
+<body class="fixed-topbar fixed-sidebar theme-sdtl color-default">
+  
+    @{
+     
+
+        <section>
+            <!-- BEGIN SIDEBAR -->
+        
+            <div class="sidebar">
+                <div class="logopanel">
+                    <h1>
+
+                        <img src="~/Resources/Frontend/img/logo6.png" width="200" height="150" />
+                        @*<img src="~/Resources/Frontend/img/logo1.png" />*@
+
+                    </h1>
+                </div>
+                <div class="sidebar-inner">
+                    <div class="menu-title">
+                    </div>
+                    <ul class="nav nav-sidebar" style="min-height:580px;">
+                        <li><a href="~/Admin/DashboardIndex" style="background: transparent;"></a></li>
+                        <li><a href="~/Admin/DashboardIndex" style="background: transparent;"></a></li>
+                        <li><a href="~/Admin/DashboardIndex" style="background: transparent;"></a></li>
+                        <li><a href="~/Admin/DashboardIndex" style="background: transparent;"></a></li>
+                        <li><a href="~/Admin/DashboardIndex"><i class="icon-home"></i><span>Setting</span></a></li>
+                        <li class="nav-parent">
+                            <a href=""><i class="icon-puzzle"></i><span>Users</span><span class="fa arrow"></span></a>
+                            <ul class="children collapse">
+                                <li><a href="~/Admin/ManageUsers"> List Users</a></li>
+                                <li><a href="~/Admin/AddUser"> Add Users</a></li>
+                            </ul>
+                        </li>
+
+                        <li class="nav-parent">
+                            <a href=""><i class="icon-puzzle"></i><span>Products</span><span class="fa arrow"></span></a>
+                            <ul class="children collapse">
+                                <li><a href="~/Admin/ManageProduct"> List Products</a></li>
+                                <li><a href="~/Admin/AddProduct"> Add Product</a></li>
+                            </ul>
+                        </li>
+
+                        <li class="nav-parent">
+                            <a href=""><i class="icon-puzzle"></i><span>Category</span><span class="fa arrow"></span></a>
+                            <ul class="children collapse">
+                                <li><a href="~/Admin/ManageCategory"> List Category</a></li>
+                                <li><a href="~/Admin/AddCategory"> Add Category</a></li>
+                            </ul>
+                        </li>
+
+                        <li class="nav-parent">
+                            <a href=""><i class="icon-puzzle"></i><span>Sub Category</span><span class="fa arrow"></span></a>
+                            <ul class="children collapse">
+                                <li><a href="~/Admin/ManageSubCategory"> List Sub Category</a></li>
+                                <li><a href="~/Admin/AddSubCategory"> Add Sub Category</a></li>
+                            </ul>
+                        </li>
+
+
+                        <li class="nav-parent">
+                            <a href=""><i class="icon-puzzle"></i><span>Doctor Info</span><span class="fa arrow"></span></a>
+                            <ul class="children collapse">
+                                <li><a href="~/Admin/ManageDoctorInfo"> List DoctorInfo</a></li>
+                                <li><a href="~/Admin/AddDoctorInfo"> Add DoctorInfo</a></li>
+                            </ul>
+                        </li>
+
+                        <li class="nav-parent">
+                            <a href=""><i class="icon-puzzle"></i><span>Completed Orders </span><span class="fa arrow"></span></a>
+                            <ul class="children collapse">
+                                <li><a href="~/Admin/OrdersCompleted"> Completed Orders List</a></li>                                
+                            </ul>
+                        </li>
+                        
+
+                    </ul>
+                    <!-- SIDEBAR WIDGET FOLDERS -->
+
+                    <div class="sidebar-footer clearfix">
+                        <a class="pull-left toggle_fullscreen" href="#" data-rel="tooltip" data-placement="top" data-original-title="Full skjerm">
+                            <i class="icon-size-fullscreen"></i>
+                        </a>
+                      
+                        <a class="pull-left btn-effect" href="~/Admin/logout" data-modal="modal-1" data-rel="tooltip" data-placement="top" data-original-title="Logout">
+                           
+                            <i class="icon-power"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <!-- END SIDEBAR -->
+            <div class="main-content">
+                <!-- BEGIN TOPBAR -->
+                <div class="topbar">
+                    <div class="header-left">
+                        <div class="topnav">
+                            <a class="menutoggle" href="#" data-toggle="sidebar-collapsed"><span class="menu__handle"><span>Menu</span></span></a>
+
+                        </div>
+                    </div>
+
+
+                    @*<div id="alerttasktxt" class="header-left" style="margin-top: 13px;color: #CA5A56;font-family: inherit;font-size: larger;">@TempData["AlertTask"]</div>*@
+
+                    <div class="header-right">
+                        <ul class="header-menu nav navbar-nav">
+
+
+                            <!-- BEGIN NOTIFICATION DROPDOWN -->
+                            <!-- BEGIN USER DROPDOWN -->
+                            <li class="dropdown" id="user-header">
+                                @*<a href="#" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+                                    <img src="~/Resources/AdminPictures/@PictureName" alt="user image">
+                                    <span class="username">Hei, @Name</span>
+                                </a>*@
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <a href="~/User/ChangePassword"><i class="icon-settings"></i><span>Change Password</span></a>
+                                    </li>
+                                    <li>
+                                        <a href="~/User/logout"><i class="icon-logout"></i><span>Logout</span></a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <!-- END USER DROPDOWN -->
+                            <!-- CHAT BAR ICON -->
+
+                        </ul>
+                    </div>
+
+                    <!-- header-right -->
+
+                </div>
+
+                <!-- END TOPBAR -->
+                <!-- BEGIN PAGE CONTENT -->
+                <div class="page-content">
+                    @*ALERT FOR TASK PERFORMED*@
+
+                    <div class="alertForTask">
+
+                        <ul class="noty_inline_layout_container i-am-new" style="width: auto; height: auto; margin: 0px; padding: 0px; list-style-type: none; z-index: 9999999; top: 0px; left: 0px;">
+                            <li class="made noty_container_type_alert animated fadeIn" style="cursor: pointer; height: 63px;">
+                                <div class="noty_bar noty_type_alert" id="noty_1004447543995130600">
+                                    <div class="noty_message">
+                                        <span class="noty_text">
+                                            <div class="alert alert-success media fade in">
+                                                <p><strong>Alert! </strong> @TempData["AlertTask"]</p>
+                                            </div>
+                                        </span>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    @*ALERT FOR TASK PERFORMED*@
+                    @RenderBody()
+                </div>
+                <!-- END PAGE CONTENT -->
+
+            </div>
+            <!-- END MAIN CONTENT -->
+
+
+
+        </section>
+    <!-- BEGIN QUICKVIEW SIDEBAR -->
+
+    <!-- END QUICKVIEW SIDEBAR -->
+    <!-- BEGIN SEARCH -->
+
+            <!-- /morphsearch-content -->
+
+    <!-- END SEARCH -->
+    }
+    <!-- BEGIN PRELOADER -->
+    <div class="loader-overlay">
+        <div class="spinner">
+            <div class="bounce1"></div>
+            <div class="bounce2"></div>
+            <div class="bounce3"></div>
+        </div>
+    </div>
+    <!-- END PRELOADER -->
+
+    <a href="#" class="scrollup"><i class="fa fa-angle-up"></i></a>
+    <script src="~/Resources/global/plugins/jquery/jquery-1.11.1.min.js"></script>
+    <script src="~/Resources/global/plugins/jquery/jquery-migrate-1.2.1.min.js"></script>
+    <script src="~/Resources/global/plugins/jquery-ui/jquery-ui-1.11.2.min.js"></script>
+    <script src="~/Resources/global/plugins/gsap/main-gsap.min.js"></script>
+    <script src="~/Resources/global/plugins/bootstrap/js/bootstrap.min.js"></script>
+    <script src="~/Resources/global/plugins/jquery-cookies/jquery.cookies.min.js"></script> <!-- Jquery Cookies, for theme -->
+    <script src="~/Resources/global/plugins/jquery-block-ui/jquery.blockUI.min.js"></script> <!-- simulate synchronous behavior when using AJAX -->
+    <script src="~/Resources/global/plugins/bootbox/bootbox.min.js"></script> <!-- Modal with Validation -->
+    <script src="~/Resources/global/plugins/mcustom-scrollbar/jquery.mCustomScrollbar.concat.min.js"></script> <!-- Custom Scrollbar sidebar -->
+    <script src="~/Resources/global/plugins/bootstrap-dropdown/bootstrap-hover-dropdown.min.js"></script> <!-- Show Dropdown on Mouseover -->
+    <script src="~/Resources/global/plugins/charts-sparkline/sparkline.min.js"></script> <!-- Charts Sparkline -->
+    <script src="~/Resources/global/plugins/retina/retina.min.js"></script> <!-- Retina Display -->
+    <script src="~/Resources/global/plugins/select2/select2.min.js"></script> <!-- Select Inputs -->
+    <script src="~/Resources/global/plugins/icheck/icheck.min.js"></script> <!-- Checkbox & Radio Inputs -->
+    <script src="~/Resources/global/plugins/backstretch/backstretch.min.js"></script> <!-- Background Image -->
+    <script src="~/Resources/global/plugins/bootstrap-progressbar/bootstrap-progressbar.min.js"></script> <!-- Animated Progress Bar -->
+    <script src="~/Resources/global/plugins/charts-chartjs/Chart.min.js"></script>
+    <script src="~/Resources/global/js/builder.js"></script><!-- Theme Builder -->
+    <script src="~/Resources/global/js/sidebar_hover.js"></script> <!-- Sidebar on Hover -->
+    <script src="~/Resources/global/js/application.js"></script> <!-- Main Application Script -->
+    <script src="~/Resources/global/js/plugins.js"></script> <!-- Main Plugin Initialization Script -->
+    <script src="~/Resources/global/js/widgets/notes.js"></script> <!-- Notes Widget -->
+    <script src="~/Resources/global/js/quickview.js"></script> <!-- Chat Script -->
+    <script src="~/Resources/global/js/pages/search.js"></script> <!-- Search Script -->
+    <!-- BEGIN PAGE SCRIPT -->
+    <script src="~/Resources/global/plugins/bootstrap/js/jasny-bootstrap.min.js"></script> <!-- File Upload and Input Masks -->
+    <!-- END PAGE SCRIPTS -->
+    <script src="~/Resources/global/plugins/summernote/summernote.min.js"></script> <!-- Simple HTML Editor -->
+
+    <script src="~/Resources/global/plugins/cke-editor/ckeditor.js"></script> <!-- Advanced HTML Editor -->
+    <script src="~/Resources/global/plugins/cke-editor/adapters/adapters.min.js"></script>
+
+    <script src="~/Resources/global/plugins/noty/jquery.noty.packaged.min.js"></script>  <!-- Notifications -->
+    <script src="~/Resources/global/js/pages/notifications.js"></script>
+
+    <script src="~/Resources/admin/layout1/js/layout.js"></script>
+
+    <script src="~/Resources/global/js/pages/search.js"></script> <!-- Search Script -->
+    <!-- BEGIN PAGE SCRIPTS -->
+    <script src="~/Resources/global/plugins/datatables/jquery.dataTables.min.js"></script> <!-- Tables Filtering, Sorting & Editing -->
+    <script src="~/Resources/global/js/pages/table_dynamic.js"></script>
+
+    <!-- END PAGE SCRIPTS -->
+    <script src="~/Resources/admin/layout4/js/layout.js"></script>
+    <script src="../assets/global/plugins/bootstrap/js/jasny-bootstrap.min.js"></script> <!-- File Upload and Input Masks -->
+
+    <script src="~/Resources/global/js/jquery.datetimepicker.js"></script>
+    <!-- BEGIN Image galary SCRIPTS -->
+    <link href="~/Resources/global/plugins/magnific/magnific-popup.min.css" rel="stylesheet">
+    <link href="~/Resources/global/plugins/hover-effects/hover-effects.min.css" rel="stylesheet">
+    <script src="~/Resources/global/plugins/magnific/jquery.magnific-popup.min.js"></script>  <!-- Image Popup -->
+    <script src="~/Resources/global/plugins/isotope/isotope.pkgd.min.js"></script>  <!-- Filter & sort magical Gallery -->
+    <!-- END Image galary SCRIPTS -->
+    <script src="~/Resources/global/plugins/switchery/switchery.min.js"></script>
+    <script src="~/Resources/global/plugins/bootstrap-tags-input/bootstrap-tagsinput.min.js"></script>
+    <script src="~/Resources/global/plugins/dropzone/dropzone.min.js"></script><!-- Upload Image & File in dropzone -->
+    <script src="~/Resources/global/js/pages/form_icheck.js"></script>
+
+    @RenderSection("ImageCroping", required: false)
+
+    <script>
+
+
+
+        $(document).ready(function () {
+            var baseURICurrent = $('.nav')[0].baseURI;
+            var totalObjectsSideBar = $('.nav')[0].attributes[0].ownerElement.children.length;
+            for (var a = 0; a < totalObjectsSideBar; a++) {
+                var MainLi = $('.nav')[0].attributes[0].ownerElement.children[a];
+                var MainInnerTags = MainLi.children.length;
+                if (MainInnerTags > 1) {
+                    var innerLI = MainLi.children[1].children.length;
+                    for (var b = 0; b < innerLI; b++) {
+                        var innerLIDetails = MainLi.children[1].children[b];
+                        var urldOnView = innerLIDetails.children[0].href;
+                        if (urldOnView == baseURICurrent) {
+                            MainLi.className = "nav-parent nav-active active";
+                            MainLi.children[1].style.display = "Block";
+                            innerLIDetails.className = "active";
+                        }
+                    }
+                }
+            }
+        });
+
+
+        var alerttexthere = '@Html.Raw(HttpUtility.JavaScriptStringEncode((string)TempData["AlertTask"]))'; //alert text for actions performed
+        $(window).load(function () {
+
+            //alert("aaa");
+            //$(".mCSB_scrollTools").mCustomScrollbar({
+            //    advanced: {
+            //        updateOnContentResize: true,
+            //        updateOnBrowserResize: true
+
+            //    }
+            //});
+
+
+
+            if (alerttexthere != "") {
+                $('.alertForTask').hide().delay(1000);
+                $('.alertForTask').fadeIn('slow').delay(20000).fadeOut('slow');
+                //$('.alertForTask').show();
+            }
+            else {
+                $('.alertForTask').hide();
+            }
+        });
+        $(document).ready(function () {
+            $('.alertForTask').click(function () {
+                $('.alertForTask').hide();
+            })
+        })
+    </script>
+
+
+
+</body>
+</html>

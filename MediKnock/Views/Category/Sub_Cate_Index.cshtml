@@ -1,0 +1,64 @@
+﻿@model MediKnock.Models.Client.CategoryBE
+
+@{
+    ViewBag.Title = "Sub_Cate_Index";
+    Layout = "~/Views/Shared/_MainMaster.cshtml";
+}
+
+<section class="category">
+
+    <div class="container">
+        <div class="row">
+
+
+            @if (Model.lstProduct != null && Model.lstProduct.Count > 0)
+            {
+
+                <div class="span9">
+
+                    <!-- Products list -->
+                    <ul class="product-list isotope">
+
+
+                        @foreach (var item in Model.lstProduct)
+                        {
+
+                            <li class="standard" data-price="50">
+                                <a href="Cat-SubCat-Product-@item.ID" title="Nep Pocket Tee">
+
+                                    <div class="image">
+                                        <img src="~/Images/ProductImages/@item.Image" alt="@item.Image" class="img-responsive" />
+                                    </div>
+
+                                    <div class="title">
+                                        <div class="prices">
+                                            <span class="price">Rs. @item.Price</span>
+                                        </div>
+                                        <h3>@item.Name</h3>
+
+                                        @*<div class="rating rating-3">
+                                                <i class="icon-heart"></i>
+                                                <i class="icon-heart"></i>
+                                                <i class="icon-heart"></i>
+                                            </div>*@
+                                    </div>
+
+                                </a>
+                            </li>
+
+                        }
+
+
+                    </ul>
+                    <!-- End class="product-list isotope" -->
+                    <!-- "Load More" Button -->
+                    <!-- End "Load More" Button -->
+
+                </div>
+
+            }
+
+        </div>
+    </div>
+
+</section>

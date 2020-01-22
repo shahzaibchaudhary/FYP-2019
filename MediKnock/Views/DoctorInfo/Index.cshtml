@@ -1,0 +1,72 @@
+﻿@model MediKnock.Models.Admin.DoctorModel
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_MainMaster.cshtml";
+}
+@using MediKnock.CommonClasses
+
+<!-- Home content -->
+
+<section class="home">
+
+
+ 
+
+    <section class="featured">
+        <div class="container">
+
+            <div class="row">
+
+                
+                <div class="span9">
+                    <!-- Products list -->
+
+                    <ul class="product-list isotope">
+
+                        @if (Model.lstDoctorInfo != null && Model.lstDoctorInfo.Count > 0)
+                        {
+                            foreach (var item in Model.lstDoctorInfo)
+                            {
+                                <li class="standard" data-price="50">
+                                    <a href="#" >
+
+                                      
+
+                                        <div class="title">
+                                            <div class="prices">
+                                                <span class="price">@item.Specialization</span>
+                                            </div>
+                                            <h3>@item.Name</h3>
+                                            <h3>@item.Phone</h3>
+                                            <h3>@item.Hospital</h3>
+                                            <h3>@item.Specialization</h3>
+                                            <h3>@item.Adress</h3>
+                                            <h3>@item.Email</h3>
+
+
+
+                                        </div>
+
+                                    </a>
+                                </li>
+                            }
+
+                        }
+
+
+                    </ul>
+
+                    <!-- End class="product-list " -->
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+
+
+</section>
+
+<!-- End class="home" -->
