@@ -1,0 +1,173 @@
+﻿@model MediKnock.Models.Admin.AdminUserModel
+
+@{
+    ViewBag.Title = "AddUser";
+    Layout = "~/Views/Shared/_AdminMaster.cshtml";
+}
+
+
+<div class="col-xs-9">
+    <h2>Register <strong>New Users</strong></h2>
+</div>
+<div class="col-xs-3">
+    <input type="button" value="Manage Users" style="float:right;" class="btn btn-dark" data-toggle="modal" data-target="#modal-select" onclick="location.href = '/Admin/ManageUsers'">
+</div>
+
+
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script type="text/javascript">
+    function GetImageNameInHiddenBox() {
+        debugger;
+        var UploadedImage = $("#ImgUpload").children("img").attr('src');
+        if (UploadedImage === undefined) {
+            var Img = $("#AdminImage").attr('src');
+            $("#hdn_Img").val(Img);
+        }
+        else {
+            $("#hdn_Img").val(UploadedImage);
+        }
+    }
+</script>
+
+<form method="post" enctype="multipart/form-data" id="FormUser">
+
+    <div class="row">
+        <div class="col-lg-12 portlets">
+            <div class="panel">
+
+                <div class="panel-content">
+                    <p>Here you can define different System users who can access this system</p>
+                    <div class="row">
+                        <div class="col-md-6">
+
+                            <div class="form-group">
+                                <label class="form-label">Name</label>
+                                @Html.TextBoxFor(x => x.UserDetail.ID, new { @Style = "display: none;" })
+                                @Html.TextBoxFor(x => x.UserDetail.FullName, new { @placeholder = "Enter Name", @class = "form-control", @required = "required" })
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Email</label>
+                                @{
+                                    if (Model != null)
+                                    {
+
+                                        @Html.TextBoxFor(x => x.UserDetail.Email, new { @readonly = "readonly", @placeholder = "Enter Email Address", @class = "form-control", @required = "required", @type = "Email" })
+                                        @Html.ValidationMessageFor(x => x.UserDetail.Email, null, new { @class = "redText" })
+                                        // @{
+                                        if (ViewBag.Exists == "Email")
+                                        {
+                                            <p style="color:red">Email is already Exists</p>
+                                        }
+                                        // }
+                                    }
+                                    else
+                                    {
+                                        @Html.TextBoxFor(x => x.UserDetail.Email, new { @placeholder = "Enter Email Address", @class = "form-control", @required = "required", @type = "Email" })
+                                        @Html.ValidationMessageFor(x => x.UserDetail.Email, null, new { @class = "redText" })
+                                        // @{
+                                        if (ViewBag.Exists == "Email")
+                                        {
+                                            <p style="color:red">Email is already Exists</p>
+                                        }
+                                        // }
+                                    }
+
+                                }
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Contact</label>
+                                @Html.TextBoxFor(x => x.UserDetail.ContactNo, new { @placeholder = "Enter Contact No", @class = "form-control", @required = "required" })
+                            </div>
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <div class="icheck-inline">
+                                        @{
+                                            if (ViewBag.Active == false)
+                                            {
+                                                <label>
+                                                    <input type="checkbox" name="Active" data-checkbox="icheckbox_square-blue"> Active
+                                                </label>
+                                            }
+                                            else
+                                            {
+                                                <label>
+                                                    <input type="checkbox" name="Active" checked data-checkbox="icheckbox_square-blue"> Active
+                                                </label>
+                                            }
+                                        }
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="form-label">Set a Username</label>
+                                @Html.TextBoxFor(x => x.UserDetail.UserName, new { @placeholder = "Enter Username", @class = "form-control", @required = "required" })
+                                @if (ViewBag.Exists == "Username")
+                                {
+                                    <p style="color:red">Username is already Exists</p>
+                                }
+
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Password</label>
+                                @Html.TextBoxFor(x => x.UserDetail.Password, new { @placeholder = "Enter Password", @type = "password", @class = "form-control", @required = "required" })
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Address</label>
+                                @Html.TextBoxFor(x => x.UserDetail.Address, new { @placeholder = "Enter Address", @class = "form-control" })
+                            </div>
+                            @*<div data-provides="fileinput" class="fileinput fileinput-new">
+                                <div style="display:none;">
+                                    @Html.TextBoxFor(x => x.UserDetail.Picture, new { @id = "hdn_Img" })
+                                </div>
+                               
+                                <p><strong>Image uploader</strong></p>
+                                <div class="fileinput-new thumbnail">
+                                    @{
+                                        if (Model != null)
+                                        {
+                                            <img id="AdminImage" alt="gallery 3" class="img-responsive" src="~/Resources/AdminPictures/@Model.UserDetail.Picture" data-src="">
+                                        }
+                                        else
+                                        {
+
+                                            <img id="AdminImage" alt="gallery 3" class="img-responsive" src="~/Resources/AdminPictures/NoImage.jpg" data-src="">
+                                        }
+                                    }
+
+                                </div>
+                                <div id="ImgUpload" class="fileinput-preview fileinput-exists thumbnail"></div>
+                                <div>
+                                    <span class="btn btn-default btn-file">
+                                        <span class="fileinput-new">Select image...</span><span class="fileinput-exists">Change</span>
+                                        <input type="file" name="...">
+                                    </span>
+                                    <a data-dismiss="fileinput" class="btn btn-default fileinput-exists" href="#">Remove</a>
+                                </div>
+                            </div>*@
+
+
+                        </div>
+                    </div>
+                    <div>
+                        @{
+                            string Text = "Create User";
+                            if (Model != null)
+                            {
+                                Text = "Update User";
+                            }
+                        }
+
+                        <input type="submit" id="btnSave" onclick="GetImageNameInHiddenBox();" class=" btn btn-dark" value="@Text" name="Save" />
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</form>

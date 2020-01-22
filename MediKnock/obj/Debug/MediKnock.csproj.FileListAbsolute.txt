@@ -1,0 +1,59 @@
+F:\Shahzaib-Data\MediKnock\MediKnock\bin\MediKnock.dll.config
+F:\Shahzaib-Data\MediKnock\MediKnock\bin\MediKnock.dll
+F:\Shahzaib-Data\MediKnock\MediKnock\bin\MediKnock.pdb
+F:\Shahzaib-Data\MediKnock\MediKnock\bin\EntityFramework.dll
+F:\Shahzaib-Data\MediKnock\MediKnock\bin\EntityFramework.SqlServer.dll
+F:\Shahzaib-Data\MediKnock\MediKnock\bin\Microsoft.Web.Infrastructure.dll
+F:\Shahzaib-Data\MediKnock\MediKnock\bin\Microsoft.Web.Mvc.FixedDisplayModes.dll
+F:\Shahzaib-Data\MediKnock\MediKnock\bin\Newtonsoft.Json.dll
+F:\Shahzaib-Data\MediKnock\MediKnock\bin\System.Web.Helpers.dll
+F:\Shahzaib-Data\MediKnock\MediKnock\bin\System.Web.Mvc.dll
+F:\Shahzaib-Data\MediKnock\MediKnock\bin\System.Web.Razor.dll
+F:\Shahzaib-Data\MediKnock\MediKnock\bin\System.Web.WebPages.Deployment.dll
+F:\Shahzaib-Data\MediKnock\MediKnock\bin\System.Web.WebPages.dll
+F:\Shahzaib-Data\MediKnock\MediKnock\bin\System.Web.WebPages.Razor.dll
+F:\Shahzaib-Data\MediKnock\MediKnock\bin\EntityFramework.xml
+F:\Shahzaib-Data\MediKnock\MediKnock\bin\EntityFramework.SqlServer.xml
+F:\Shahzaib-Data\MediKnock\MediKnock\bin\Newtonsoft.Json.xml
+F:\Shahzaib-Data\MediKnock\MediKnock\bin\System.Web.Helpers.xml
+F:\Shahzaib-Data\MediKnock\MediKnock\bin\System.Web.Mvc.xml
+F:\Shahzaib-Data\MediKnock\MediKnock\bin\System.Web.Razor.xml
+F:\Shahzaib-Data\MediKnock\MediKnock\bin\System.Web.WebPages.xml
+F:\Shahzaib-Data\MediKnock\MediKnock\bin\System.Web.WebPages.Deployment.xml
+F:\Shahzaib-Data\MediKnock\MediKnock\bin\System.Web.WebPages.Razor.xml
+F:\Shahzaib-Data\MediKnock\MediKnock\obj\Debug\MediKnock.dll
+F:\Shahzaib-Data\MediKnock\MediKnock\obj\Debug\MediKnock.pdb
+E:\FYP\Final Project\MediKnock\MediKnock\bin\MediKnock.dll.config
+E:\FYP\Final Project\MediKnock\MediKnock\bin\MediKnock.dll
+E:\FYP\Final Project\MediKnock\MediKnock\bin\MediKnock.pdb
+E:\FYP\Final Project\MediKnock\MediKnock\bin\EntityFramework.dll
+E:\FYP\Final Project\MediKnock\MediKnock\bin\EntityFramework.SqlServer.dll
+E:\FYP\Final Project\MediKnock\MediKnock\bin\Microsoft.Web.Infrastructure.dll
+E:\FYP\Final Project\MediKnock\MediKnock\bin\Microsoft.Web.Mvc.FixedDisplayModes.dll
+E:\FYP\Final Project\MediKnock\MediKnock\bin\Newtonsoft.Json.dll
+E:\FYP\Final Project\MediKnock\MediKnock\bin\System.Net.Http.Formatting.dll
+E:\FYP\Final Project\MediKnock\MediKnock\bin\System.Web.Helpers.dll
+E:\FYP\Final Project\MediKnock\MediKnock\bin\System.Web.Http.dll
+E:\FYP\Final Project\MediKnock\MediKnock\bin\System.Web.Http.WebHost.dll
+E:\FYP\Final Project\MediKnock\MediKnock\bin\System.Web.Mvc.dll
+E:\FYP\Final Project\MediKnock\MediKnock\bin\System.Web.Razor.dll
+E:\FYP\Final Project\MediKnock\MediKnock\bin\System.Web.WebPages.Deployment.dll
+E:\FYP\Final Project\MediKnock\MediKnock\bin\System.Web.WebPages.dll
+E:\FYP\Final Project\MediKnock\MediKnock\bin\System.Web.WebPages.Razor.dll
+E:\FYP\Final Project\MediKnock\MediKnock\bin\EntityFramework.xml
+E:\FYP\Final Project\MediKnock\MediKnock\bin\EntityFramework.SqlServer.xml
+E:\FYP\Final Project\MediKnock\MediKnock\bin\Newtonsoft.Json.xml
+E:\FYP\Final Project\MediKnock\MediKnock\bin\System.Net.Http.Formatting.xml
+E:\FYP\Final Project\MediKnock\MediKnock\bin\System.Web.Helpers.xml
+E:\FYP\Final Project\MediKnock\MediKnock\bin\System.Web.Http.xml
+E:\FYP\Final Project\MediKnock\MediKnock\bin\System.Web.Http.WebHost.xml
+E:\FYP\Final Project\MediKnock\MediKnock\bin\System.Web.Mvc.xml
+E:\FYP\Final Project\MediKnock\MediKnock\bin\System.Web.Razor.xml
+E:\FYP\Final Project\MediKnock\MediKnock\bin\System.Web.WebPages.xml
+E:\FYP\Final Project\MediKnock\MediKnock\bin\System.Web.WebPages.Deployment.xml
+E:\FYP\Final Project\MediKnock\MediKnock\bin\System.Web.WebPages.Razor.xml
+E:\FYP\Final Project\MediKnock\MediKnock\obj\Debug\MediKnock.csproj.CoreCompileInputs.cache
+E:\FYP\Final Project\MediKnock\MediKnock\obj\Debug\MediKnock.csproj.CopyComplete
+E:\FYP\Final Project\MediKnock\MediKnock\obj\Debug\MediKnock.dll
+E:\FYP\Final Project\MediKnock\MediKnock\obj\Debug\MediKnock.pdb
+E:\FYP\Final Project\MediKnock\MediKnock\obj\Debug\MediKnock.csprojAssemblyReference.cache

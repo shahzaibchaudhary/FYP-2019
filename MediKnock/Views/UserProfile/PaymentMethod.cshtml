@@ -1,0 +1,111 @@
+﻿@model MediKnock.Models.Client.CheckOutBE
+
+@{
+    ViewBag.Title = "PaymentMethod";
+    Layout = "~/Views/Shared/_MainMaster.cshtml";
+}
+
+<!-- Content section -->
+<section class="main">
+
+    <!-- Checkout / Billing Address -->
+    <section class="checkout">
+
+
+        <div class="container">
+            @*<form enctype="multipart/form-data" action="payment-method.html" method="post">*@
+
+            @using (@Html.BeginForm("PaymentMethod", "UserProfile"))
+            {
+                @Html.HiddenFor(x => x.CartId)
+                
+                <div class="row">
+                    <div class="span9">
+                        <div class="box">
+
+                            <!-- Checkout progress -->
+                            <div id="checkout-progress">
+                                <ul class="nav nav-tabs">
+
+                                    <li>
+                                        <a href="#">
+                                            <i class="icon-envelope icon-large"></i>
+                                            <span>Shipping address</span>
+                                        </a>
+                                    </li>
+                                    <li class="active">
+                                        <a href="#">
+                                            <i class="icon-truck icon-large"></i>
+                                            <span>Shipping method</span>
+                                        </a>
+                                    </li>
+                                  
+                                </ul>
+                            </div>
+                            <!-- End id="checkout-progress" -->
+                            <!-- Checkout content -->
+                            <div id="checkout-content">
+                                <div class="box-header">
+                                    <h3>Payment method</h3>
+                                    
+                                </div>
+
+
+
+                                <div class="box-content">
+                                    <div class="shipping-methods">
+                                        <div class="row-fluid">
+                                            <div class="span4">
+                                                <div class="box highlight">
+                                                    <div class="hgroup title">
+                                                        <h3>Free shipping</h3>
+                                                        <h5>Delivered to your letterbox within 3-4 working days</h5>
+                                                    </div>
+
+                                                    <div class="box-content highlight">
+                                                        <div class="price">
+                                                            <strong>cash on Delivery!</strong>
+                                                        </div>
+
+                                                        @*<input type="radio" value="1" name="shipping_option" id="option1">*@
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
+                                <div class="box-footer">
+                                    <div class="pull-left">
+                                        <a href="shipping.html" class="btn btn-small">
+                                            <i class="icon-chevron-left"></i> &nbsp; Shipping address
+                                        </a>
+                                    </div>
+
+                                    <div class="pull-right">
+                                        <button type="submit" class="btn btn-primary">
+                                            Finalize Order &nbsp; <i class="icon-chevron-right"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- End id="checkout-content" -->
+
+                        </div>
+                    </div>
+
+                  
+                </div>
+
+            }
+
+            @*</form>*@
+        </div>
+    </section>
+    <!-- End class="checkout" -->
+
+</section>
+<!-- End class="main" -->

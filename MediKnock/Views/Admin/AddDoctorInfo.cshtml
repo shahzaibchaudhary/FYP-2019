@@ -1,0 +1,86 @@
+﻿@model MediKnock.Models.Admin.DoctorModel
+
+@{
+    ViewBag.Title = "AddDoctorInfo";
+    Layout = "~/Views/Shared/_AdminMaster.cshtml";
+}
+
+
+
+<div class="col-xs-9">
+    <h2>Add<strong> Doctor Info</strong></h2>
+</div>
+<div class="col-xs-3">
+    <input type="button" value="Manage Products" style="float:right;" class="btn btn-dark" data-toggle="modal" data-target="#modal-select" onclick="location.href = '/Admin/ManageDoctorInfo'">
+</div>
+<form method="post" enctype="multipart/form-data" id="FormUser">
+
+    <div class="row">
+        <div class="col-lg-12 portlets">
+            <div class="panel">
+                <div class="panel-content">
+                    <h2> ADD/UPDATE Product</h2>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="form-label">ProductName </label>
+                                @Html.TextBoxFor(x => x.DoctorInfoDetail.Id, new { @Style = "display: none;" })
+                                @Html.TextBoxFor(x => x.DoctorInfoDetail.Name, new { @placeholder = "Name", @class = "form-control", @required = "required" })
+
+                                @if (Model.IsNameAlreadyExist == "yes")
+                                {
+                                    <span style="color:red">This Name is already added.</span>
+                                }
+
+
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="form-label">Email</label>
+                                @Html.TextBoxFor(x => x.DoctorInfoDetail.Email, new { @placeholder = "Email", @class = "form-control" })
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="form-label">Phone</label>
+                                @Html.TextBoxFor(x => x.DoctorInfoDetail.Phone, new { @placeholder = "Phone", @class = "form-control" })
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="form-label">Adress</label>
+                                @Html.TextBoxFor(x => x.DoctorInfoDetail.Adress, new { @placeholder = "Adress", @class = "form-control" })
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="form-label">Hospital</label>
+                                @Html.TextBoxFor(x => x.DoctorInfoDetail.Hospital, new { @class = "form-control", @placeholder = "Hospital" })
+                            </div>
+                        </div>
+
+
+                    </div>
+                    <div>
+                        @{
+                            string Text = "Save";
+                            if (Model.add == "update")
+                            {
+                                Text = "Update";
+                            }
+                        }
+
+
+
+
+                        <input type="submit" id="btnSave"class=" btn btn-dark" value="@Text" name="Save" />
+                        @*<a class=" btn btn-dark" type="submit" href='~/AdminClass/Cancel'> Cancel </a>*@
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

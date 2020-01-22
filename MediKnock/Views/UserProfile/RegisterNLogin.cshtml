@@ -1,0 +1,354 @@
+﻿@model MediKnock.Models.Client.UserProfileBE
+
+@{
+    ViewBag.Title = "RegisterNLogin";
+    Layout = "~/Views/Shared/_MainMaster.cshtml";
+}
+
+
+@*<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>*@
+
+<script src="~/Custom/js/JQueryForCustomPages.js"></script>
+
+<script src="~/Custom/js/ProjectScript.js"></script>
+
+
+
+<script type="text/javascript">
+
+
+    $(document).ready(function () {
+        debugger;
+
+        $('#confirmpassid').on('keyup', function () {
+
+            debugger;
+
+            if ($('#passid').val() == $('#confirmpassid').val()) {
+                $('#message').html('Password Matched').css('color', 'green');
+            } else
+                $('#message').html('Password Not Matching').css('color', 'red');
+        });
+    });
+
+
+    function CheckLogin() {
+
+        debugger;
+
+        var email = $("#login_email").val();
+        var password = $("#login_password").val();
+       
+
+        $.ajax({
+            type: 'POST',
+            url: '/UserProfile/SubmitLogInn',
+            data: "{'email':'" + email + "','password':'" + password + "'}",
+            contentType: 'application/json; charset=utf-8',
+            dataType: 'text',
+            async: false,
+            success: function (response) {
+                if (response == "false") {
+                    $('#loginspan').html('<strong> Invalid Email OR Password </strong>').css('color', 'red');
+                } else {
+                    window.location.href = '/UserProfile/Profile?CartId=0';
+                }
+
+            },
+            error: function ajaxError(response) {
+                //alert("hi");
+                window.location.href = '/UserProfile/Profile?CartId=0';
+            }
+        });
+    }
+
+</script>
+
+<!-- Login / Register -->
+<section class="login_register">
+
+
+
+    <div class="container">
+
+        @if (!string.IsNullOrEmpty(ViewBag.isSentOrExist))
+        {
+            if (ViewBag.isSentOrExist == "true")
+            {
+                <h6 style="color:green;">
+                    User Register successfully you can login with Email ID.
+                </h6>
+            }
+            else if (ViewBag.isSentOrExist == "exist")
+            {
+                <h6 style="color:green;">
+                    Email already exist, Please register with another email.
+                </h6>
+            }
+            else if (ViewBag.isSentOrExist == "unathorize")
+            {
+                <h6 style="color:green;">
+                    Please login before to add items into your cart. If you are new user you can register here.
+                </h6>
+            }
+
+        }
+
+
+
+
+        <div class="row">
+            <div class="span6">
+                <!-- Login -->
+                <div class="login">
+                    <div class="box">
+
+                        @*<form onsubmit="return false;" enctype="multipart/form-data" action="#" method="post">*@
+
+                        @*@using (@Html.BeginForm("SubmitLogInn", "UserProfile"))
+                            {*@
+
+                        <div class="hgroup title">
+                            <h3>Customer login</h3>
+                            <h5>Please login using your existing account</h5>
+                        </div>
+
+                        <div class="box-content">
+                            <div class="row-fluid">
+                                <div class="span6">
+                                    <div class="control-group">
+                                        <label class="control-label" for="login_email">Email</label>
+                                        <div class="controls">
+                                            <input class="span12" id="login_email" type="text" name="email" value="" />
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="span6">
+                                    <div class="control-group">
+                                        <label class="control-label" for="login_password">Password</label>
+                                        <div class="controls">
+                                            <input class="span12" id="login_password" type="password" name="password" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <span id="loginspan">
+
+
+
+                            </span>
+
+
+                        </div>
+
+                        <div class="buttons">
+                            <div class="pull-right">
+                                <button type="submit" onclick="CheckLogin();" class="btn btn-inverse btn-black" name="login" value="Login">
+                                    Login
+                                </button>
+                                @*<a href="~/UserProfile/ResetPassword" class="btn btn-small">
+                                        Reset my password
+                                    </a>*@
+                            </div>
+                        </div>
+
+
+                        @*}*@
+                        @*</form>*@
+
+
+                    </div>
+                </div>
+                <!-- End class="login" -->
+            </div>
+
+            <div class="span6">
+                <!-- Register -->
+                <div class="register">
+                    <div class="box">
+                        <div class="hgroup title">
+                            <h3>Want to Register?</h3>
+                            <h5>Registration allows you to avoid filling in billing and shipping forms every time you checkout on this website. </h5>
+                        </div>
+
+                        <div class="buttons">
+                            <div class="pull-left">
+                                <a href="#register" class="btn btn-small" data-toggle="modal">
+                                    Register now &nbsp; <i class="icon-chevron-right"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- End class="register" -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Register modal window -->
+    <div id="register" class="modal hide fade" tabindex="-1">
+
+        @*<form onsubmit="return false;" enctype="multipart/form-data" action="#" method="post">*@
+       
+
+        @using (@Html.BeginForm("SubmitRegister", "UserProfile"))
+         {
+
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <div class="hgroup title">
+                    <h3>Register now</h3>
+                    <h5>Registered users get access to features such as order history and so much more!</h5>
+                </div>
+            </div>
+
+            <div class="modal-body">
+
+                <div class="row-fluid">
+                    <div class="span6">
+                        <div class="control-group">
+                            <label class="control-label" for="first_name">First name</label>
+                            <div class="controls">
+
+                                @Html.TextBoxFor(x => x.UserProfileDetail.FirstName, new { @id = "FirstName", @validation = "validate", @class = "span12" })
+
+
+                                @*<input class="span12" type="text" id="first_name" name="first_name" value="" />*@
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="span6">
+                        <div class="control-group">
+                            <label class="control-label" for="last_name">Last name</label>
+                            <div class="controls">
+                                @Html.TextBoxFor(x => x.UserProfileDetail.LastName, new { @id = "LastName", @validation = "validate", @class = "span12" })
+
+
+                                @*<input class="span12" type="text" id="last_name" name="last_name" value="" />*@
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row-fluid">
+
+                    <div class="span6">
+                        <div class="control-group">
+                            <label class="control-label" for="password">Gender</label>
+                            <div class="controls">
+
+                                @*<select class="span12" name="gender" id="gender">
+                                        <option value="0">Male</option>
+                                        <option value="1">Female</option>
+
+                                    </select>*@
+
+                                @Html.DropDownListFor(x => x.strGender, new SelectList(Model.ddlGender, "Value", "Text"), new { @class = "form-control", @validation = "validateDDL" })
+
+
+                                @*<input class="span12" type="text" id="gender" name="gender" value="" />*@
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="span6">
+                        <div class="control-group">
+                            <label class="control-label" for="email">Email address</label>
+                            <div class="controls">
+
+                                @Html.TextBoxFor(x => x.UserProfileDetail.Email, new { @id = "Email", @validation = "validateEmail", @class = "span12" })
+
+
+                                @*<input class="span12" type="text" id="email" name="email" value="" />*@
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+                </div>
+
+                @if (Model.UserProfileDetail.ID > 0)
+                {
+
+                }
+                else
+                {
+                    <div class="row-fluid">
+                        <div class="span6">
+                            <div class="control-group">
+                                <label class="control-label" for="password">Password</label>
+                                <div class="controls">
+
+                                    <input class="span12" type="password" validation="validate" id="passid" name="password" autocomplete="off" />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="span6">
+                            <div class="control-group">
+                                <label class="control-label" for="password_confirm">Password confirm</label>
+                                <div class="controls">
+                                    <input class="span12" type="password" validation="validate" id="confirmpassid" name="password_confirm" autocomplete="off" />
+                                </div>
+
+                                <span id='message'>
+
+                                </span>
+
+                            </div>
+                        </div>
+                    </div>
+
+                }
+
+                <div class="row-fluid">
+
+                    <div class="span6">
+                        <div class="control-group">
+                            <label class="control-label" for="password">Contact Number</label>
+
+                            <div class="controls">
+
+                                @Html.TextBoxFor(x => x.UserProfileDetail.ContactNo, new { @id = "ContactNo", @validation = "validate", @class = "span12" })
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="span6">
+                        <div class="control-group">
+                            <label class="control-label" for="email">Address</label>
+                            <div class="controls">
+
+                                @Html.TextBoxFor(x => x.UserProfileDetail.Address, new { @id = "Address", @validation = "validate", @class = "span12" })
+
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+                </div>
+
+
+            </div>
+
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-primary btn-small" name="signup" value="Register" onclick="return ValidateClick();">
+                    Register now &nbsp; <i class="icon-ok"></i>
+                </button>
+            </div>
+
+        }
+
+        @*</form>*@
+    </div>
+    <!-- End Register modal window -->
+</section>
+<!-- End Login / Register -->
